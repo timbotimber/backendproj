@@ -75,4 +75,7 @@ app.use("/user", auth);
 const routes = require("./routes/site-routes");
 app.use("/", routes);
 
+const locations = require("./routes/locations");
+app.use("/", locations);
+
 module.exports = app;

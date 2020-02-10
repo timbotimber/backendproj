@@ -50,7 +50,9 @@ router.post("/signup", (req, res, next) => {
     favouritefilm,
     profession
   })
-    .then(() => {
+    .then(createdUser => {
+      req.session.user = createdUser;
+      console.log(req.session.user);
       res.redirect("http://localhost:3000/");
     })
     .catch(error => {

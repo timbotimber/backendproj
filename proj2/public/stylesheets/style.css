@@ -1,9 +1,24 @@
 body {
-  padding: 50px;
-  font: 14px "Futura", Helvetica, Arial, sans-serif; }
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  font: 14px "Futura", Helvetica, Arial, sans-serif;
+  background-color: #e8d4d4; }
 
 a {
-  color: #00b7ff; }
+  color: #feffff; }
+
+#header {
+  height: 5vh;
+  background-color: #4487a1;
+  display: flexbox;
+  align-items: center; }
+
+.header-list {
+  display: flex;
+  justify-content: space-around;
+  font-size: larger; }
 
 #form {
   margin: 30px auto;
