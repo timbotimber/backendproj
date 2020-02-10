@@ -1,10 +1,35 @@
+$lightblue: #75a9b6;
+$darkerblue: #4487a1;
+$lightyellow: #dcba32;
+$darkeryellow: #d19c17;
+$red: #d42c08;
+$base: #e8d4d4;
+$white: #feffff;
+
 body {
-  padding: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font: 14px "Futura", Helvetica, Arial, sans-serif;
+  background-color: $base;
 }
 
 a {
-  color: #00b7ff;
+  color: $white;
+}
+
+#header {
+  height: 5vh;
+  background-color: $darkerblue;
+  display: flexbox;
+  align-items: center;
+}
+
+.header-list {
+  display: flex;
+  justify-content: space-around;
+  font-size: larger;
 }
 
 #form {
