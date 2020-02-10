@@ -1,45 +1,45 @@
-# Berlin gigs
+# Wes Anderson places
 
-see gig and concert listings from SongKick presented on a map + add your own if you're hosting one
+see WA places presented on a map + add your own if you're see one
 
 ## Routes
 
 - Which routes do we need to implement for the following features?
 - Who should be allowed to access these routes?
 
-#### Display all listings
+#### Display all locations
 
-`GET` `/listings` -> render the list of all listings: User generated and those from the Songkick API
-
-who: everyone
-
-#### Display one gig or concert
-
-`GET` `/listing/:id` -> render a specific listing with a given id
+`GET` `/locations` -> render the list of all places: User generated and those from Instragram API
 
 who: everyone
 
-#### Add a gig or concert
+#### Display one location
 
-`GET` `/listing/new` -> render a form to add a gig or concert
+`GET` `/location/:id` -> render a specific location with a given id
 
-`POST` `/listing` -> create a new listing
+who: everyone
+
+#### Add a location
+
+`GET` `/location/new` -> render a form to add a location
+
+`POST` `/location` -> create a new location
 
 who: logged in users
 
-#### Edit a gig or concert
+#### Edit a location
 
-`GET` `/listing/:id/edit` -> render a form to edit a gig or concert
+`GET` `/location/:id/edit` -> render a form to edit a location
 
-`POST` `/listing/:id` -> update a concert with a given id
+`POST` `/location/:id` -> update a location with a given id
 
-who: the owner/original creator of the gig or concert, moderators
+who: the owner/original creator of the location, moderators
 
-#### Delete a gig or concert
+#### Delete a location
 
-`GET` `/listing/:id/delete` -> delete a gig or concert with a given id
+`GET` `/location/:id/delete` -> delete a location with a given id
 
-who: the owner of the gig or concert, moderators
+who: the owner of the location, moderators
 
 ## Models
 
@@ -51,18 +51,19 @@ who: the owner of the gig or concert, moderators
 - role: default = regular, enum = [regular, moderators] (just in case we can do comments)
 - username
 - password
+- fav WA film
+- profession 
 
-### Listing (1 gig or concert)
+### location (1 location)
 
 - owner: User id
-- artist
-- venue name
-- venue address
-- date
-- start + end time
+- place name
+- place address
+- built date
 - description
 - photo
-- price
+- WS quote
+
   <!-- - comments: [Comment id] -->
 
 <!-- ### Comment
