@@ -50,17 +50,6 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
-// default value for title local
-app.locals.title = "Where's Anderson";
-
-const index = require("./routes/index");
-app.use("/", index);
-
-const auth = require("./routes/auth");
-app.use("/user", auth);
-
-app.use("/", require("./routes/site-routes"));
-
 // sessions tracker
 
 app.use(
@@ -73,5 +62,17 @@ app.use(
     })
   })
 );
+
+// default value for title local
+app.locals.title = "Where's Anderson";
+
+const index = require("./routes/index");
+app.use("/", index);
+
+const auth = require("./routes/auth");
+app.use("/user", auth);
+
+const routes = require("./routes/site-routes");
+app.use("/", routes);
 
 module.exports = app;
