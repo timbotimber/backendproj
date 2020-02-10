@@ -59,6 +59,8 @@ app.use("/", index);
 const auth = require("./routes/auth");
 app.use("/user", auth);
 
+app.use("/", require("./routes/site-routes"));
+
 // sessions tracker
 
 app.use(
