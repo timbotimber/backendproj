@@ -23,15 +23,15 @@ who: everyone
 
 ## create an account
 
-`GET` `/users/signup` -> render a form to sign up
+`GET` `/user/signup` -> render a form to sign up
 
-`POST` `/users/signup` -> create an account
+`POST` `/user/signup` -> create an account
 
 ## log in to post a location
 
-`GET` `/users/login` -> render a form to log in
+`GET` `/user/login` -> render a form to log in
 
-`POST` `/users/login` -> sumbit login details
+`POST` `/user/login` -> sumbit login details
 
 #### Add a location
 
@@ -39,7 +39,7 @@ who: everyone
 
 `POST` `/location` -> create a new location
 
-who: logged in users
+who: logged in user
 
 #### Edit a location
 
