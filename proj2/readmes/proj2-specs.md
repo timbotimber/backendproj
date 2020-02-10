@@ -19,9 +19,19 @@ who: everyone
 
 who: everyone
 
-#### Log in
+#### User interaction
 
-`POST` `/login`
+## create an account
+
+`GET` `/users/signup` -> render a form to sign up
+
+`POST` `/users/signup` -> create an account
+
+## log in to post a location
+
+`GET` `/users/login` -> render a form to log in
+
+`POST` `/users/login` -> sumbit login details
 
 #### Add a location
 

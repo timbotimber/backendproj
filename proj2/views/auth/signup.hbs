@@ -1,9 +1,33 @@
-<form id="form" action="/signup" method="POST">
-  <label for="username">Username</label><br>
+<form id="form" action="/user/signup" method="POST">
+
+  <label for="username">Username</label>
   <input type="text" name="username" placeholder="Your username">
 
-  <label for="password">Password</label><br>
+  <label for="email">Email address</label>
+  <input type="text" name="email" placeholder="Your email">
+
+  <label for="password">Password</label>
   <input type="password" name="password" placeholder="********">
 
+  <label for="favouriteWeAnFilm">Favourite Wes Anderson Film</label><br>
+  <input type="text" name="weanfilm" placeholder="The Life Aquatic">
+
+  <label for="profession">Choose your job</label>
+
+  <select id="cars">
+    <option value="oceanic explorer">Oceanic Explorer</option>
+    <option value="hotelier">Hotelier</option>
+    <option value="scout leader">Scout Leader</option>
+    <option value="dog scientist">Dog Scientist</option>
+    <option value="tennis player">Tennis Player</option>
+    <option value="farmer">Farmer</option>
+  </select>
+
+
   <button type="submit">Create account</button>
+
+  {{#if errorMessage}}
+  <div class="error-message">{{ errorMessage }}</div>
+  {{/if}}
+
 </form>
