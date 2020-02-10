@@ -19,6 +19,10 @@ who: everyone
 
 who: everyone
 
+#### Log in
+
+`POST` `/login`
+
 #### Add a location
 
 `GET` `/location/new` -> render a form to add a location
@@ -52,7 +56,7 @@ who: the owner of the location, moderators
 - username
 - password
 - fav WA film
-- profession 
+- profession
 
 ### location (1 location)
 
