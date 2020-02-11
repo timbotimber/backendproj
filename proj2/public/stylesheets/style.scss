@@ -11,7 +11,7 @@ body {
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  font: 14px "Futura", Helvetica, Arial, sans-serif;
+  // font: 14px "Futura", Helvetica, Arial, sans-serif;
   background-color: $base;
 }
 
@@ -82,3 +82,33 @@ a {
   padding: 20px;
   width: 100%;
 }
+
+.locationCard > a {
+  font-family: 'Beth Ellen', cursive;
+  color: black;
+}
+
+.locationCard {
+  border: 2px solid black;
+  width: 35vw;
+}
+
+.locationCard img{
+  // width: 150px;
+  // height: 150px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  width: 15vw;
+  
+}
+
+
+.contain {
+  border: 5px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
