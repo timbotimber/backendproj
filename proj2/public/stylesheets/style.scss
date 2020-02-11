@@ -2,8 +2,8 @@ $lightblue: #75a9b6;
 $darkerblue: #4487a1;
 $lightyellow: #dcba32;
 $darkeryellow: #d19c17;
-$red: #d42c08;
-$base: #e8d4d4;
+$red: #d53f50;
+$base: #f9e9cd;
 $white: #feffff;
 
 body {
@@ -22,8 +22,6 @@ a {
 #header {
   height: 5vh;
   background-color: $darkerblue;
-  display: flexbox;
-  align-items: center;
 }
 
 .header-list {
@@ -38,7 +36,7 @@ a {
 }
 
 #form label {
-  color: #666;
+  color: $darkeryellow;
   display: inline-block;
   margin-bottom: 10px;
   text-align: center;
@@ -56,10 +54,10 @@ a {
 }
 
 #form button {
-  background: #43a3e6;
-  border: 1px solid #43a3e6;
+  background: $lightblue;
+  border: 1px solid $lightblue;
   border-radius: 4px;
-  color: #fff;
+  color: $white;
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
@@ -71,15 +69,15 @@ a {
 }
 
 #form button:hover {
-  background: #fff;
-  color: #43a3e6;
+  background: $white;
+  color: $lightblue;
   transition: 0.3s ease background;
 }
 
 .error-message {
-  background: #f02b63;
+  background: $red;
   box-sizing: border-box;
-  color: #fff;
+  color: $white;
   margin: 20px auto;
   padding: 20px;
   width: 100%;

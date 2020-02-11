@@ -2,18 +2,16 @@ body {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   font: 14px "Futura", Helvetica, Arial, sans-serif;
-  background-color: #e8d4d4; }
+  background-color: #f9e9cd; }
 
 a {
   color: #feffff; }
 
 #header {
   height: 5vh;
-  background-color: #4487a1;
-  display: flexbox;
-  align-items: center; }
+  background-color: #4487a1; }
 
 .header-list {
   display: flex;
@@ -25,7 +23,7 @@ a {
   width: 380px; }
 
 #form label {
-  color: #666;
+  color: #d19c17;
   display: inline-block;
   margin-bottom: 10px;
   text-align: center;
@@ -41,10 +39,10 @@ a {
   margin-bottom: 20px; }
 
 #form button {
-  background: #43a3e6;
-  border: 1px solid #43a3e6;
+  background: #75a9b6;
+  border: 1px solid #75a9b6;
   border-radius: 4px;
-  color: #fff;
+  color: #feffff;
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
@@ -55,14 +53,14 @@ a {
   width: 100%; }
 
 #form button:hover {
-  background: #fff;
-  color: #43a3e6;
+  background: #feffff;
+  color: #75a9b6;
   transition: 0.3s ease background; }
 
 .error-message {
-  background: #f02b63;
+  background: #d53f50;
   box-sizing: border-box;
-  color: #fff;
+  color: #feffff;
   margin: 20px auto;
   padding: 20px;
   width: 100%; }
