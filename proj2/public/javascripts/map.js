@@ -28,12 +28,13 @@ popup.addTo(map);
 axios
   .get(`http://localhost:3000/locations`)
   .then(response => {
+    console.log("response", response);
     let locations = response.data; // the array of coordinates that we are sending from our backend route
 
     locations.forEach(location => {
-      console.log(location.coordinates);
-      const marker = new mapboxgl.Marker();
-      marker.setLngLat(locations.coordinates());
+      console.log("test", location.coordinates);
+      const marker = new mapboxgl.Marker({ color: "#d53f50" });
+      marker.setLngLat(location.coordinates);
 
       marker.addTo(map);
     });

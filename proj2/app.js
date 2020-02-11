@@ -11,7 +11,6 @@ const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
-
 mongoose
   .connect("mongodb://localhost/proj2", { useNewUrlParser: true })
   .then(x => {
@@ -22,7 +21,6 @@ mongoose
   .catch(err => {
     console.error("Error connecting to mongo", err);
   });
-
 
 const app_name = require("./package.json").name;
 const debug = require("debug")(
@@ -57,10 +55,9 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 app.use(
   session({
     secret: "basic-auth-secret",
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 24 * 60 * 60 * 10000 },
     store: new MongoStore({
-      mongooseConnection: mongoose.connection,
-      ttl: 24 * 60 * 60 // 1 day
+      mongooseConnection: mongoose.connection
     })
   })
 );
