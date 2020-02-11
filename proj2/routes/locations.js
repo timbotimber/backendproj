@@ -45,4 +45,15 @@ router.patch("/locations/:id", (req, res, next) => {
     });
 });
 
+router.get("/", (req, res, next) => {
+  Location.find()
+    .then(locationDocument => {
+      console.log("test");
+      res.json(locationDocument);
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
 module.exports = router;
