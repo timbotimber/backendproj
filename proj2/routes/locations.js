@@ -15,16 +15,10 @@ const Location = require("../models/Location");
 
 router.get("/locations", (req, res) => {
   Location.find()
-<<<<<<< HEAD
     .then(locationDocuments => {
       console.log(locationDocuments[0])
       res.render("locations/list.hbs", { locationList: locationDocuments });
       // res.send(require("../data.js"))
-=======
-    .then(locations => {
-      // res.render("../views/locations/list.hbs", { locations, user: req.user });
-      res.send(require("../data.js"));
->>>>>>> 40d04f1f904764a99393740d98491b7a660a1c01
     })
     .catch(err => {
       next(err);
