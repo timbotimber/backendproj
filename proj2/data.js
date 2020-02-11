@@ -168,6 +168,7 @@ const locations = [
 
 
 const Location = require("./models/Location"); //
+Location.collection.drop();
 
 Location.create(locations)
     .then(locations => {
@@ -175,3 +176,5 @@ Location.create(locations)
     }).catch(err => {
         console.log(err);
     });
+
+module.exports = locations;
