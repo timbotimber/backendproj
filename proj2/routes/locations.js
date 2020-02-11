@@ -26,13 +26,13 @@ router.get("/locations", (req, res) => {
     });
 });
 
-// router.get(
-//   "/locations/add",
-//   // loginCheck,
-//   (req, res) => {
-//     res.render("../views/locations/add.hbs");
-//   }
-// );
+router.get(
+  "/locations/add",
+  // loginCheck,
+  (req, res) => {
+    res.render("../views/locations/add.hbs");
+  }
+);
 
 // router.get("/rawdata/:id", (req, res, next) => {
 //   Location.findById(req.params.id);
