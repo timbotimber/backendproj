@@ -1,3 +1,4 @@
+
 mapboxgl.accessToken =
   "pk.eyJ1IjoidGltYm90aW1iZXIiLCJhIjoiY2s2Z2s1aTU0MHltMzNrcXB3bjlnYWNyYiJ9.14z3LvxL-5ovU8Ur6CuJtw";
 const map = new mapboxgl.Map({
@@ -32,8 +33,9 @@ axios
     let locations = response.data; // the array of coordinates that we are sending from our backend route
 
     locations.forEach(location => {
+      console.log(location)
       console.log("test", location.coordinates);
-      const marker = new mapboxgl.Marker({ color: "#d53f50" });
+      let marker = new mapboxgl.Marker({ color: "#d53f50" });
       marker.setLngLat(location.coordinates);
 
       marker.addTo(map);

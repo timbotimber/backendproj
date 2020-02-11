@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Location = require("../models/Location");
-const data = require("../data.js");
 
 // uncomment to see the data (obj) in browser
 // router.get("/locations", (req, res) => {
