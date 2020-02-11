@@ -24,3 +24,35 @@ const popup = new mapboxgl.Popup();
 popup.setLngLat(map.getCenter());
 popup.setHTML("<div><h1> Hello Wes </h1></div>");
 popup.addTo(map);
+
+axios
+  .get(`http://localhost:3000/locations`)
+  .then(response => {
+    let locations = response.data; // the array of coordinates that we are sending from our backend route
+
+    locations.forEach(location => {
+      console.log(location.coordinates);
+      const marker = new mapboxgl.Marker();
+      marker.setLngLat(locations.coordinates());
+
+      marker.addTo(map);
+    });
+
+    marker.on("dragend", data => {
+      const coord = data.target.coordinates;
+
+      axios
+        .patch(`http://localhost:3000/locations`, { coordinates: coord })
+        .then(() => {
+          console.log("locations updated!");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    });
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+module.exports = router;
