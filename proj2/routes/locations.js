@@ -5,8 +5,8 @@ const Location = require("../models/Location");
 router.get("/locations", (req, res) => {
   Location.find()
     .then(locations => {
-      res.send(require("../data.js"));
       // res.render("../views/locations/list.hbs", { locations, user: req.user });
+      res.send(require("../data.js"));
     })
     .catch(err => {
       next(err);

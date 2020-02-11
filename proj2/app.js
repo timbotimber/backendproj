@@ -10,7 +10,7 @@ const logger = require("morgan");
 const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const data = require("../proj2/data.js")
+
 
 mongoose
   .connect("mongodb://localhost/proj2", { useNewUrlParser: true })
@@ -22,6 +22,7 @@ mongoose
   .catch(err => {
     console.error("Error connecting to mongo", err);
   });
+
 
 const app_name = require("./package.json").name;
 const debug = require("debug")(

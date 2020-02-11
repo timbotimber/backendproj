@@ -206,6 +206,7 @@ const locations = [
 ];
 
 const Location = require("./models/Location"); //
+Location.collection.drop();
 
 Location.create(locations)
   .then(locations => {
