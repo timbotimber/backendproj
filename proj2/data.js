@@ -166,3 +166,12 @@ const locations = [
     }
 ];
 
+
+const Location = require("./models/Location"); //
+
+Location.create(locations)
+    .then(locations => {
+        console.log(locations.placeName);
+    }).catch(err => {
+        console.log(err);
+    });
