@@ -7,12 +7,13 @@ router.get("/", (req, res, next) => {
 });
 
 router.use((req, res, next) => {
-  if (req.session.currentUser) {
+  if (req.session.user) {
     next();
   } else {
     res.redirect("/user/login");
   }
 });
+
 router.get("/secret", (req, res, next) => {
   res.render("secret");
 });

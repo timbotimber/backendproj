@@ -1,25 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Location = require("../models/Location");
+const data = require("../data.js");
 
 router.get("/locations", (req, res) => {
-  Location.find()
-    .then(locations => {
-      // res.render("../views/locations/list.hbs", { locations, user: req.user });
-      res.send(require("../data.js"));
-    })
-    .catch(err => {
-      next(err);
-    });
+  console.log("HEEEELLOOO");
+  res.json(data);
 });
-
-const loginCheck = (req, res, next) => {
-  if (req.session.user) {
-    next();
-  } else {
-    res.redirect("/");
-  }
-};
 
 // router.get(
 //   "/locations/add",
@@ -45,7 +32,7 @@ router.patch("/locations/:id", (req, res, next) => {
     });
 });
 
-router.get("/", (req, res, next) => {
+router.get("/locations", (req, res, next) => {
   Location.find()
     .then(locationDocument => {
       console.log("test");

@@ -70,7 +70,7 @@ router.post("/login", (req, res, next) => {
 
   if (theUsername === "" || thePassword === "") {
     res.render("auth/login", {
-      errorMessage: "Please enter both a username and a password to sign in."
+      errorMessage: "Please enter both a username and  a password to sign in."
     });
     return;
   }
@@ -85,7 +85,7 @@ router.post("/login", (req, res, next) => {
       }
       if (bcrypt.compareSync(thePassword, user.password)) {
         console.log(req.session);
-        req.session.currentUser = user;
+        req.session.user = user;
         res.redirect("/");
       } else {
         res.render("auth/login", {
