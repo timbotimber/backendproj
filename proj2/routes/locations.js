@@ -34,11 +34,11 @@ router.get("/locations", (req, res) => {
 //   }
 // );
 
-router.get("/locations/:id", (req, res, next) => {
-  Location.findById(req.params.id);
-});
+// router.get("/rawdata/:id", (req, res, next) => {
+//   Location.findById(req.params.id);
+// });
 
-router.patch("/locations/:id", (req, res, next) => {
+router.patch("/rawdata/:id", (req, res, next) => {
   const changes = req.body; // in our axios call on the front-end, we'll make sure to pass the fields that need to be updated
   Location.updateOne({ _id: req.params.id }, changes)
     .then(() => {
@@ -50,10 +50,10 @@ router.patch("/locations/:id", (req, res, next) => {
     });
 });
 
-router.get("/locations", (req, res, next) => {
+router.get("/rawdata", (req, res, next) => {
   Location.find()
     .then(locationDocument => {
-      console.log("test");
+      console.log("check this");
       res.json(locationDocument);
     })
     .catch(err => {

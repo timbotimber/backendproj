@@ -26,7 +26,7 @@ popup.setHTML("<div><h1> Hello Wes </h1></div>");
 popup.addTo(map);
 
 axios
-  .get(`http://localhost:3000/locations`)
+  .get(`http://localhost:3000/rawdata/`)
   .then(response => {
     console.log("response", response);
     let locations = response.data; // the array of coordinates that we are sending from our backend route
@@ -55,5 +55,3 @@ axios
   .catch(err => {
     console.log(err);
   });
-
-module.exports = router;
