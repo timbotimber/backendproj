@@ -1,7 +1,9 @@
+console.log("Hez")
+
 const locations = [
     {
         owner: "User1",
-        image: "/image/1.Viewfinders.jpg",
+        image: "./images/wesanderson_images/1.Viewfinders.jpg",
         placeName: "Viewfinder Makapu‘u Point",
         located: "Oʻahu, Hawaii",
         builtData: 1909,
@@ -9,7 +11,7 @@ const locations = [
     },
     {
         owner: "User1",
-        image: "/image/2.Hotel Nemzeti.jpg",
+        image: "./images/wesanderson_images/2.Hotel Nemzeti.jpg",
         placeName: "Hotel Nemzeti",
         located: "Budapest, Hungary",
         builtData: 1896,
@@ -17,7 +19,7 @@ const locations = [
     },
     {
         owner: "User1",
-        image: "/image/3.Bedford Springs Resort.jpg",
+        image: "./images/wesanderson_images/3.Bedford Springs Resort.jpg",
         placeName: "Bedford Springs Resort",
         located: "Bedford, Pennsylvania",
         builtData: 1806,
@@ -25,7 +27,7 @@ const locations = [
     },
     {
         owner: "User1",
-        image: "/image/4.Hillsborough Castle.jpg",
+        image: "./images/wesanderson_images/4.Hillsborough Castle.jpg",
         placeName: "Hillsborough Castle",
         located: "Northern Ireland",
         builtData: 1780,
@@ -33,7 +35,7 @@ const locations = [
     },
     {
         owner: "Andy Miller",
-        image: "/image/5.Banff Springs Hotel.jpg",
+        image: "./images/wesanderson_images/5.Banff Springs Hotel.jpg",
         placeName: "Banff Springs Hotel",
         located: "Alberta, Canada",
         builtDate: 1888,
@@ -41,7 +43,7 @@ const locations = [
     },
     {
         owner: "Andy Miller",
-        image: "/image/6.Volontaires Station.jpg",
+        image: "./images/wesanderson_images/6.Volontaires Station.jpg",
         placeName: "Volontaires Station",
         builtDate: 1910,
         located: "Paris, France",
@@ -49,7 +51,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/7.Wendy Thompson Hut.jpg",
+        image: "./images/wesanderson_images/7.Wendy Thompson Hut.jpg",
         placeName: "Wendy Thompson Hut ",
         builtData: 2000,
         located: "British Columbia, Canada",
@@ -57,7 +59,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/8.Old Point Loma Lighthouse.jpg",
+        image: "./images/wesanderson_images/8.Old Point Loma Lighthouse.jpg",
         placeName: "Senate of Canada",
         builtData: 2013,
         located: "Ottawa, Canada",
@@ -66,7 +68,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/9.Lake Bled.jpg",
+        image: "./images/wesanderson_images/9.Lake Bled.jpg",
         placeName: "Lake Bled",
         builtData: 1655,
         located: "Julian Alps, Slovenia",
@@ -75,7 +77,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/10.Southern Fuegian Railway.jpg",
+        image: "./images/wesanderson_images/10.Southern Fuegian Railway.jpg",
         placeName: "Southern Fuegian Railway",
         builtData: 1909,
         located: "Ushuaia, Argentina",
@@ -84,7 +86,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/11.Melk Abbey.jpg",
+        image: "./images/wesanderson_images/11.Melk Abbey.jpg",
         placeName: "Melk Abbey",
         builtData: 1702,
         located: "Melk, Austria",
@@ -93,7 +95,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/12.University of Leeds.jpg",
+        image: "./images/wesanderson_images/12.University of Leeds.jpg",
         placeName: "University of Leeds",
         builtData: 1894,
         located: "West Yorkshire, England",
@@ -101,7 +103,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/13.Hospital De Sant Pau.jpg",
+        image: "./images/wesanderson_images/13.Hospital De Sant Pau.jpg",
         placeName: "Hospital De Sant Pau",
         builtData: 1401,
         located: "Barcelona, Spain",
@@ -110,7 +112,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/14.Riffelhaus.jpg",
+        image: "./images/wesanderson_images/14.Riffelhaus.jpg",
         placeName: "Riffelhaus",
         builtData: 1853,
         located: "Zermatt, Switzerland",
@@ -118,7 +120,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/15.Khalifa International Stadium.jpg",
+        image: "./images/wesanderson_images/15.Khalifa International Stadium.jpg",
         placeName: "Khalifa International Stadium",
         builtData: 1976,
         located: "Doha, Qatar",
@@ -126,7 +128,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/16.Great Market Hall.jpg",
+        image: "./images/wesanderson_images/16.Great Market Hall.jpg",
         placeName: "Great Market Hall",
         builtData: 1897,
         located: "Budapest, Hungary",
@@ -134,7 +136,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/17.Chicheley Hall.jpg",
+        image: "./images/wesanderson_images/17.Chicheley Hall.jpg",
         placeName: "Chicheley Hall",
         builtData: 1725,
         located: "Buckinghamshire, England",
@@ -142,7 +144,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/18.Senate of Canada.jpg",
+        image: "./images/wesanderson_images/18.Senate of Canada.jpg",
         placeName: "Old Point Loma Lighthouse",
         builtData: 1855,
         located: "San Diego, California",
@@ -150,7 +152,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/19.Kau Ban Mosque.jpg",
+        image: "./images/wesanderson_images/19.Kau Ban Mosque.jpg",
         placeName: "Kau Ban Mosque",
         builtData: 1643,
         located: "Agra, India",
@@ -158,7 +160,7 @@ const locations = [
     },
     {
         owner: "Someowner",
-        image: "/images/20.Jantar Mantar.jpg",
+        image: "./images/wesanderson_images/20.Jantar Mantar.jpg",
         placeName: "Jantar Mantar",
         builtData: 1724,
         located: "Delhi, India",
@@ -166,13 +168,16 @@ const locations = [
     }
 ];
 
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost/proj2", () => {
+    console.log("Connected to DB");
+});
 
 const Location = require("./models/Location"); //
-Location.collection.drop();
 
 Location.create(locations)
     .then(locations => {
-        console.log(locations.placeName);
+        console.log(locations);
     }).catch(err => {
         console.log(err);
     });

@@ -2,11 +2,23 @@ const express = require("express");
 const router = express.Router();
 const Location = require("../models/Location");
 
+// uncomment to see the data (obj) in browser
+// router.get("/locations", (req, res) => {
+//   Location.find()
+//     .then(locations => {
+//       res.send(require("../data.js"))
+//     })
+//     .catch(err => {
+//       next(err);
+//     });
+// });
+
 router.get("/locations", (req, res) => {
   Location.find()
-    .then(locations => {
-      // res.render("../views/locations/list.hbs", { locations, user: req.user });
-      res.send(require("../data.js"))
+    .then(locationDocuments => {
+      console.log(locationDocuments[0])
+      res.render("locations/list.hbs", { locationList: locationDocuments });
+      // res.send(require("../data.js"))
     })
     .catch(err => {
       next(err);
