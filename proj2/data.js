@@ -1,3 +1,5 @@
+console.log("Hez");
+
 const locations = [
   {
     owner: "User1",
@@ -206,9 +208,9 @@ const locations = [
 ];
 
 const Location = require("./models/Location"); //
-Location.collection.drop();
 
 Location.create(locations)
+
   .then(locations => {
     console.log(locations.placeName);
   })
