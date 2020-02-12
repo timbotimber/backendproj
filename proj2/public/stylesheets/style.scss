@@ -88,29 +88,28 @@ a {
   width: 100%;
 }
 
-.locationCard > a {
-  font-family: "Beth Ellen", cursive;
+.locationCard a {
+  font-family: 'Beth Ellen', cursive;
   color: black;
+  text-decoration: none;
 }
 
 .locationCard {
   border: 2px solid black;
   width: 35vw;
+  text-align: center;
+  font-family: 'Ruthie', cursive;
 }
 
-.locationCard img {
-  // width: 150px;
-  // height: 150px;
+.locationCard img{
   border: 2px solid black;
-  display: flex;
-  flex-direction: row;
-  width: 15vw;
+  width: 18vw;
 }
 
-.contain {
+.container {
   border: 5px solid black;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }

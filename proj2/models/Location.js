@@ -5,7 +5,8 @@ const locationSchema = new Schema({
   owner: String, //User id
   image: String,
   placeName: String,
-  builtData: Date,
+  located: String,
+  builtData: Number,
   description: String,
   coordinates: [Number],
   wesAndersonMovie: {
