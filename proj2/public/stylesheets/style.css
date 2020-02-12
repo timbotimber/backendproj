@@ -10,17 +10,26 @@ h2 {
   font-family: "Montserrat", sans-serif;
   text-align: center; }
 
-a {
-  color: #feffff; }
+button {
+  color: #feffff;
+  background-color: #dcba32;
+  border-radius: 50px;
+  width: 9vw;
+  height: 7vh;
+  font-size: 1em; }
 
 #header {
-  height: 5vh;
-  background-color: #4487a1; }
-
-.header-list {
+  height: 10vh;
+  background-color: #4487a1;
   display: flex;
+  align-items: center;
   justify-content: space-around;
-  font-size: larger; }
+  margin-bottom: 5px;
+  border-radius: 15px;
+  width: 95vw; }
+
+#map {
+  border-radius: 15px; }
 
 #form {
   margin: 30px auto;
@@ -69,32 +78,34 @@ a {
   padding: 20px;
   width: 100%; }
 
-<<<<<<< HEAD
 .locationCard a {
   font-family: 'Beth Ellen', cursive;
   color: black;
   text-decoration: none; }
-=======
-.locationCard > a {
-  font-family: "Beth Ellen", cursive;
-  color: black; }
->>>>>>> b2627aef7be0d76ef0d5e0ec02785c39d076ac93
-
-.locationCard {
-  border: 2px solid black;
-  width: 35vw;
-  text-align: center;
-  font-family: 'Ruthie', cursive; }
 
 .locationCard img {
   border: 2px solid black;
   width: 18vw; }
 
+.locationCard {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 35vw;
+  text-align: center;
+  font-family: "Montserrat", sans-serif; }
+
 .container {
   border: 5px solid black;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center; }
+  align-items: center;
+  position: relative;
+  max-height: 100%;
+  overflow: auto;
+  width: 95vw;
+  border-radius: 15px; }
+
+.container::-webkit-scrollbar {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

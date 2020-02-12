@@ -1,5 +1,17 @@
-<h1>this will be a list of locations</h1>
+<div id="header">
+
+    <a href="/locations"><button>All locations</button></a>
+    <a href="/locations/add" id="add-marker"><button>Add a location</button></a>
+    <a href="http://localhost:3000/locations/5e43e4c744a34ff6d76414a8"><button>test 1 page</button></a>
+    <a href="/user/login"><button>Login</button></a>
+    <a href="/logout"><button>Logout</button></a>
+    <a href="/user/signup"><button>Sign up</button></a>
+
+</div>
+
+
 <div class="container">
+    <h1>WES ANDERSON COLLECTION</h1>
     {{#each locationList}}
     <div class="locationCard">
         <a href="/locations/{{_id}}">
