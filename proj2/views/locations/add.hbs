@@ -1,6 +1,6 @@
 <h1>Add your own Wes location</h1>
 
-<form action="/locations/add" method="POST" id="form">
+<form action="/locations/add" method="POST" id="form" enctype="multipart/form-data">
 
   <label for="placeName">Name</label>
   <input name="placeName" type="text" id="placeName">
@@ -12,7 +12,7 @@
   <input name="description" type="text" id="description">
 
   <label for="image">add an image </label>
-  <input type="text" name="image" id="image">
+  <input type="file" name="image" id="image">
 
   <label for="WesAnQuote">Add a Wes Anderson quote</label>
   <input type="text" name="quote" id="quote">
