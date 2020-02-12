@@ -28,9 +28,23 @@ router.post("/locations/add", (req, res) => {
   let date = req.body.date;
   let description = req.body.description;
   let quote = req.body.quote;
-  let coords = req.body.coords.split(",");
-  console.log(coords);
-  res.send(`Name: ${name}, Date: ${date}, ${coords}`);
+  let coordinates = req.body.coordinates.split(",");
+  console.log(coordinates);
+  const newLocation = new Location({
+    name,
+    date,
+    description,
+    quote,
+    coordinates
+  });
+  newLocation
+    .save()
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch(error => {
+      console.log(error);
+    });
 });
 
 router.get("/locations/:locationId", (req, res, next) => {
@@ -64,7 +78,6 @@ router.patch("/rawdata/:id", (req, res, next) => {
 router.get("/rawdata", (req, res, next) => {
   Location.find()
     .then(locationDocument => {
-      console.log("check this");
       res.json(locationDocument);
     })
     .catch(err => {

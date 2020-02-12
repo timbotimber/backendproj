@@ -17,7 +17,7 @@ document.getElementById("add-marker").onclick = e => {
   marker.addTo(map);
   marker.on("dragend", data => {
     const coord = data.target.getLngLat();
-    console.log(coord);
+    console.log("cood", coord);
     const popup = new mapboxgl.Popup();
 
     popup.setLngLat(coord);
@@ -41,7 +41,7 @@ document.getElementById("add-marker").onclick = e => {
     <label for="WesAnQuote">Add a Wes Anderson quote</label>
     <input type="text" name="quote" id="quote">
   
-    <input style="display: none" type="text" name="coords" value="${coord.toArray()}">
+    <input style="display: none" type="text" name="coordinates" value="${coord.toArray()}">
 
     <button type="submit">Add</button>
   </form>`);
@@ -62,19 +62,18 @@ axios
       marker.setLngLat(location.coordinates);
 
       marker.addTo(map);
-    });
+      marker.on("dragend", data => {
+        const coord = data.target.coordinates;
 
-    marker.on("dragend", data => {
-      const coord = data.target.coordinates;
-
-      axios
-        .patch(`http://localhost:3000/locations`, { coordinates: coord })
-        .then(() => {
-          console.log("locations updated!");
-        })
-        .catch(err => {
-          console.log(err);
-        });
+        axios
+          .patch(`http://localhost:3000/locations`, { coordinates: coord })
+          .then(() => {
+            console.log("locations updated!");
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      });
     });
   })
   .catch(err => {
