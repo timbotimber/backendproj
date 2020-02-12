@@ -66,25 +66,60 @@ router.post("/locations/add", (req, res) => {
     });
 });
 
-router.get("/locations/:locationId", (req, res, next) => {
+// router.get("/locations/edit", (req, res, next) => {
+//   res.render("locations/edit");
+// });
+
+// router.get("/locations/edit", (req, res, next) => {
+//   Location.findOne({ _id: req.query.location_id })
+//     .then(location => {
+//       res.render("location/edit", { location });
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// });
+
+router.post("/locations/edit/:id", (req, res, next) => {
+  const { placeName, builtData, description } = req.body;
+  console.log("HELLO");
+  // Location.update(
+  //   { _id: req.query.location_id },
+  //   { $set: { placeName, builtData, description } }
+  // )
+  //   .then(() => {
+  //     res.redirect("/");
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
+  Location.findByIdAndUpdate(
+    req.params.id,
+    { placeName, builtData, description },
+    { new: true }
+  )
+    .then(response => {
+      console.log("HALLO", { response });
+      res.redirect("/");
+    })
+    .catch(err => console.log(err));
+});
+
+router.get("/locations/edit/:locationId", (req, res, next) => {
   const locationsId = req.params.locationId;
   Location.findById(locationsId)
     .then(location => {
       console.log(location);
-      res.render("locations/location.hbs", location);
+      res.render("locations/edit", { location });
     })
     .catch(err => {
       next(err);
     });
 });
 
-// router.get("/rawdata/:id", (req, res, next) => {
-//   Location.findById(req.params.id);
-// });
-
 router.patch("/rawdata/:id", (req, res, next) => {
   const changes = req.body; // in our axios call on the front-end, we'll make sure to pass the fields that need to be updated
-  Location.updateOne({ _id: req.params.id }, changes)
+  Location.updateOne({ id: req.params.id }, changes)
     .then(() => {
       // successful update, we can send a response
       res.json();
@@ -98,6 +133,18 @@ router.get("/rawdata", (req, res, next) => {
   Location.find()
     .then(locationDocument => {
       res.json(locationDocument);
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
+router.get("/locations/:locationId", (req, res, next) => {
+  const locationsId = req.params.locationId;
+  Location.findById(locationsId)
+    .then(location => {
+      console.log(location);
+      res.render("locations/location.hbs", location);
     })
     .catch(err => {
       next(err);

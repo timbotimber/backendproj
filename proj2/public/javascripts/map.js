@@ -60,7 +60,6 @@ axios
       console.log("test", location.coordinates);
       let marker = new mapboxgl.Marker({ color: "#d53f50" });
       marker.setLngLat(location.coordinates);
-
       marker.addTo(map);
       marker.on("dragend", data => {
         const coord = data.target.coordinates;
