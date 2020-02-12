@@ -1,15 +1,16 @@
 <h1>this will be a list of locations</h1>
-<div class="contain">
+<div class="container">
     {{#each locationList}}
     <div class="locationCard">
         <a href="/locations/{{_id}}">
             {{!-- <div id="locationImage"> --}}
             <img src="{{image}}" alt="">
             {{!-- </div> --}}
-            <h4>{{placeName}}</h4>
-            <p> {{located}} </p>
-            <p> {{description}} </p>
+            <h3>{{placeName}}</h3>
+            <h5>{{located}}</h5>
+            <h6>{{builtData}} </h6>
         </a>
+        <p> {{description}} </p>
     </div>
     {{/each}}
 
