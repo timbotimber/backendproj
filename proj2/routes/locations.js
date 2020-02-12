@@ -24,40 +24,29 @@ router.get(
   }
 );
 
-router.post("/locations/add", (req, res) => {
+
+
+
+
+
+
+// hello 
+router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
   let name = req.body.placeName;
+  let image = req.body.image;
   let date = req.body.date;
   let description = req.body.description;
   let quote = req.body.quote;
-  let coordinates = req.body.coordinates.split(",");
-  console.log(coordinates);
-  const newLocation = new Location({
+  // let coordinates = req.body.coordinates.split(",");
+  // console.log(coordinates);
+  Location.create({
     name,
+    image,
     date,
     description,
     quote,
-    coordinates
-  });
-
-  // foto upload
-  // router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
-  //   let name = req.body.placeName;
-  //   let date = req.body.date;
-  //   let description = req.body.description;
-  //   let quote = req.body.quote;
-  //   let coordinates = req.body.coordinates.split(",");
-  //   console.log(coordinates);
-  //   const newLocation = new Location({
-  //     name,
-  //     date,
-  //     description,
-  //     quote,
-  //     coordinates
-  //   });
-
-
-  newLocation
-    .save()
+    // coordinates
+  })
     .then(() => {
       res.redirect("/");
     })

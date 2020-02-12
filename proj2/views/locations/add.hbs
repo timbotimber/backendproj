@@ -19,3 +19,20 @@
 
   <button type="submit">Add</button>
 </form>
+
+
+router.post("/locations/add", , (req, res) => {
+let name = req.body.placeName;
+let image = req.body.image;
+let date = req.body.date;
+let description = req.body.description;
+let quote = req.body.quote;
+let coordinates = req.body.coordinates.split(",");
+console.log(coordinates);
+Location.create({name, image, description})
+.then(location => {
+res.redirect("/");
+})
+.catch(error => {
+console.log(error);
+});
