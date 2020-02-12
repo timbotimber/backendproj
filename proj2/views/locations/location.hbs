@@ -1,15 +1,14 @@
-<h1>test</h1>
+<div class="container">
+    {{!-- <div id="locationImage"> --}}
+    {{!-- </div> --}}
+    <img src="../{{this.image}}" alt="">
 
-<div class="contain">
-    <div class="locationCard">
-        <a href="/locations/{{_id}}">
-            {{!-- <div id="locationImage"> --}}
-            <img src="{{image}}" alt="">
-            {{!-- </div> --}}
-            <h4>{{placeName}}</h4>
-            <p> {{located}} </p>
-            <p> {{description}} </p>
+    <div class="locationCard-solo">
+        <h1> {{placeName}} </h1>
+
+        <h4>{{placeName}}</h4>
+        <a href="/">
+            <button> {{located}} </button>
         </a>
+        <p> {{description}} </p>
     </div>
-
-</div>

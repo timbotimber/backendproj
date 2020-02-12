@@ -142,3 +142,14 @@ button {
 .container::-webkit-scrollbar {
   display: none;
 }
+
+.locationCard-solo {
+  font-family: 'Zhi Mang Xing', cursive;
+  border-radius: 10px;
+  width: 35vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
