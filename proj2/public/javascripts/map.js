@@ -1,4 +1,3 @@
-
 mapboxgl.accessToken =
   "pk.eyJ1IjoidGltYm90aW1iZXIiLCJhIjoiY2s2Z2s1aTU0MHltMzNrcXB3bjlnYWNyYiJ9.14z3LvxL-5ovU8Ur6CuJtw";
 const map = new mapboxgl.Map({
@@ -10,7 +9,8 @@ const map = new mapboxgl.Map({
 const nav = new mapboxgl.NavigationControl();
 map.addControl(nav, "top-right");
 
-document.getElementById("add-marker").onclick = () => {
+document.getElementById("add-marker").onclick = e => {
+  e.preventDefault();
   const marker = new mapboxgl.Marker({ draggable: true });
   const centerCoords = map.getCenter();
   marker.setLngLat(centerCoords);
@@ -18,13 +18,34 @@ document.getElementById("add-marker").onclick = () => {
   marker.on("dragend", data => {
     const coord = data.target.getLngLat();
     console.log(coord);
+    const popup = new mapboxgl.Popup();
+
+    popup.setLngLat(coord);
+    popup.setMaxWidth("400px");
+    popup.setHTML(`<h2>Use the form below to add your own location</h2> 
+    
+    <form action="/locations/add" method="POST" id="form">
+
+    <label for="placeName">Name</label>
+    <input name="placeName" type="text" id="placeName">
+  
+    <label for="start">When was it built?</label>
+    <input type="date" id="date" name="date" value="1788-07-22">
+  
+    <label for="description">Description</label>
+    <input name="description" type="text" id="description">
+  
+    <label for="image">add an image </label>
+    <input type="text" name="image" id="image">
+  
+    <label for="WesAnQuote">Add a Wes Anderson quote</label>
+    <input type="text" name="quote" id="quote">
+  
+    <button type="submit">Add</button>
+  </form>`);
+    popup.addTo(map);
   });
 };
-
-const popup = new mapboxgl.Popup();
-popup.setLngLat(map.getCenter());
-popup.setHTML("<div><h1> Hello Wes </h1></div>");
-popup.addTo(map);
 
 axios
   .get(`http://localhost:3000/rawdata/`)
@@ -33,7 +54,7 @@ axios
     let locations = response.data; // the array of coordinates that we are sending from our backend route
 
     locations.forEach(location => {
-      console.log(location)
+      console.log(location);
       console.log("test", location.coordinates);
       let marker = new mapboxgl.Marker({ color: "#d53f50" });
       marker.setLngLat(location.coordinates);

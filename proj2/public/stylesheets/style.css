@@ -3,7 +3,12 @@ body {
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
+  font-family: "Montserrat", sans-serif;
   background-color: #f9e9cd; }
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  text-align: center; }
 
 a {
   color: #feffff; }
@@ -65,7 +70,7 @@ a {
   width: 100%; }
 
 .locationCard > a {
-  font-family: 'Beth Ellen', cursive;
+  font-family: "Beth Ellen", cursive;
   color: black; }
 
 .locationCard {
