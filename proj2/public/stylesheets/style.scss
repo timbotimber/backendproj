@@ -1,6 +1,6 @@
-$lightblue: #75a9b6;
-$darkerblue: #4487a1;
-$lightyellow: #dcba32;
+$lightblue: #d1ecf1;
+$darkerblue: #90cbb9;
+$lightyellow: #fec925;
 $darkeryellow: #d19c17;
 $red: #d53f50;
 $base: #f9e9cd;
@@ -22,12 +22,14 @@ h2 {
 
 button {
   color: $white;
-  background-color: #dcba32;
+  background-color: $red;
   border-radius: 50px;
   // padding: 10px 15px;
   width: 9vw;
   height: 7vh;
   font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 #header {
@@ -45,14 +47,13 @@ button {
   border-radius: 15px;
 }
 
-
 #form {
   margin: 30px auto;
   width: 380px;
 }
 
 #form label {
-  color: $darkeryellow;
+  color: $lightyellow;
   display: inline-block;
   margin-bottom: 10px;
   text-align: center;
@@ -70,7 +71,7 @@ button {
 }
 
 #form button {
-  background: $lightblue;
+  background: $darkerblue;
   border: 1px solid $lightblue;
   border-radius: 4px;
   color: $white;
@@ -100,11 +101,11 @@ button {
 }
 
 .locationCard a {
-  font-family: 'Beth Ellen', cursive;
+  font-family: "Beth Ellen", cursive;
   color: black;
   text-decoration: none;
 }
-.locationCard img{
+.locationCard img {
   border: 2px solid black;
   width: 18vw;
 }
@@ -132,11 +133,10 @@ button {
   // justify-content: center;
   align-items: center;
   position: relative;
-  max-height:100%;
-  overflow:auto;
+  max-height: 100%;
+  overflow: auto;
   width: 95vw;
-  border-radius: 15px;;
-
+  border-radius: 15px;
 }
 
 .container::-webkit-scrollbar {

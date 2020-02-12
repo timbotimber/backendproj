@@ -12,15 +12,17 @@ h2 {
 
 button {
   color: #feffff;
-  background-color: #dcba32;
+  background-color: #d53f50;
   border-radius: 50px;
   width: 9vw;
   height: 7vh;
-  font-size: 1em; }
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 2px; }
 
 #header {
   height: 10vh;
-  background-color: #4487a1;
+  background-color: #90cbb9;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -36,7 +38,7 @@ button {
   width: 380px; }
 
 #form label {
-  color: #d19c17;
+  color: #fec925;
   display: inline-block;
   margin-bottom: 10px;
   text-align: center;
@@ -52,8 +54,8 @@ button {
   margin-bottom: 20px; }
 
 #form button {
-  background: #75a9b6;
-  border: 1px solid #75a9b6;
+  background: #90cbb9;
+  border: 1px solid #d1ecf1;
   border-radius: 4px;
   color: #feffff;
   cursor: pointer;
@@ -67,7 +69,7 @@ button {
 
 #form button:hover {
   background: #feffff;
-  color: #75a9b6;
+  color: #d1ecf1;
   transition: 0.3s ease background; }
 
 .error-message {
@@ -79,16 +81,13 @@ button {
   width: 100%; }
 
 .locationCard a {
-  font-family: 'Beth Ellen', cursive;
+  font-family: "Beth Ellen", cursive;
   color: black;
   text-decoration: none; }
-<<<<<<< HEAD
-=======
 
 .locationCard img {
   border: 2px solid black;
   width: 18vw; }
->>>>>>> eaf2040ad6bdb88a0bf3a80e869123c62e37fd42
 
 .locationCard {
   border: 2px solid black;
