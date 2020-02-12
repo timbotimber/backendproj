@@ -1,0 +1,23 @@
+<h1>Edit your location</h1>
+{{#with location}}
+<form action="/locations/edit/{{this._id}}" method="POST" id="form">
+  {{/with}}
+  <label for="placeName">Name</label>
+  <input name="placeName" type="text" id="placeName" value="{{this.placeName}}">
+
+  <label for="start">When was it built?</label>
+  <input type="date" id="date" name="builtData" value="{{this.builtData}}">
+
+  <label for="description">Description</label>
+  <input name="description" type="text" id="description" value="{{this.description}}">
+
+  <label for="image">add an image </label>
+  <input type="text" name="image" id="image">
+
+  <label for="WesAnQuote">Add a Wes Anderson quote</label>
+  <input type="text" name="quote" id="quote">
+
+  <button type="submit">Edit</button>
+
+
+</form>
