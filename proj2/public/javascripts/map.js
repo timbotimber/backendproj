@@ -41,6 +41,8 @@ document.getElementById("add-marker").onclick = e => {
     <label for="WesAnQuote">Add a Wes Anderson quote</label>
     <input type="text" name="quote" id="quote">
   
+    <input style="display: none" type="text" name="coords" value="${coord.toArray()}">
+
     <button type="submit">Add</button>
   </form>`);
     popup.addTo(map);

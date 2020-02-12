@@ -23,6 +23,16 @@ router.get(
   }
 );
 
+router.post("/locations/add", (req, res) => {
+  let name = req.body.placeName;
+  let date = req.body.date;
+  let description = req.body.description;
+  let quote = req.body.quote;
+  let coords = req.body.coords.split(",");
+  console.log(coords);
+  res.send(`Name: ${name}, Date: ${date}, ${coords}`);
+});
+
 router.get("/locations/:locationId", (req, res, next) => {
   const locationsId = req.params.locationId;
   Location.findById(locationsId)
