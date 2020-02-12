@@ -217,12 +217,10 @@ Location.create(locations)
     .then(locations => {
         console.log(locations);
         console.log(locations.placeName);
-        mongoose.connection.close()
-
-    }).catch(err => {
+        mongoose.connection.close();
+    })
+    .catch(err => {
         console.log(err);
     });
 
-
-
-module.exports = locations;
+// module.exports = locations;

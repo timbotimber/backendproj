@@ -11,8 +11,13 @@ body {
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  // font: 14px "Futura", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: $base;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
 }
 
 a {
@@ -108,4 +113,3 @@ a {
   justify-content: center;
   align-items: center;
 }
-

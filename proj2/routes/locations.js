@@ -1,17 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Location = require("../models/Location");
-
-// uncomment to see the data (obj) in browser
-// router.get("/locations", (req, res) => {
-//   Location.find()
-//     .then(locations => {
-//       res.send(require("../data.js"))
-//     })
-//     .catch(err => {
-//       next(err);
-//     });
-// });
+// const locationsJS = require("../bin/data");
 
 router.get("/locations", (req, res) => {
   Location.find()
@@ -32,6 +22,18 @@ router.get(
     res.render("../views/locations/add.hbs");
   }
 );
+
+router.get("/locations/:locationId", (req, res, next) => {
+  const locationsId = req.params.locationId;
+  Location.findById(locationsId)
+    .then(location => {
+      console.log(location);
+      res.render("locations/location.hbs", location);
+    })
+    .catch(err => {
+      next(err);
+    });
+});
 
 // router.get("/rawdata/:id", (req, res, next) => {
 //   Location.findById(req.params.id);
