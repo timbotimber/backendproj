@@ -114,11 +114,22 @@ router.get("/rawdata", (req, res, next) => {
     });
 });
 
+router.get("/locations/:locationId/delete", (req, res, next) => {
+  const locationsId = req.params.locationId;
+  Location.deleteOne({ _id: locationsId })
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
 router.get("/locations/:locationId", (req, res, next) => {
   const locationsId = req.params.locationId;
   Location.findById(locationsId)
     .then(location => {
-      console.log("STTTRTTRRTRRTRTRTTR", req.session.user._id, location.owner);
+      // console.log("STTTRTTRRTRRTRTRTTR", req.session.user._id, location.owner);
       if (req.session.user._id === location.owner) {
         location.canEdit = true;
       }
