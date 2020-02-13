@@ -23,7 +23,6 @@ router.get("/locations/add", (req, res) => {
   res.render("../views/locations/add.hbs");
 });
 
-
 // hello
 router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
   let placeName = req.body.placeName;
@@ -134,7 +133,7 @@ router.get("/locations/:locationId", (req, res, next) => {
   Location.findById(locationsId)
     .then(location => {
       // console.log("STTTRTTRRTRRTRTRTTR", req.session.user._id, location.owner);
-      if (req.session.user._id === location.owner) {
+      if (req.session.user.id === location.owner) {
         location.canEdit = true;
       }
       console.log(location);
