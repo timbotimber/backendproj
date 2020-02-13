@@ -149,4 +149,12 @@ button {
 .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip {
   display: none !important; }
 
+.aboutAnderson {
+  border: 3px solid #90cbb9;
+  border-radius: 15px;
+  background-image: url(../images/wes-background.jpg);
+  opacity: 0.5;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 400; }
+
 /*# sourceMappingURL=style.css.map */
