@@ -30,19 +30,19 @@ document.getElementById("add-marker").onclick = e => {
     <form action="/locations/add" method="POST" id="form">
 
     <label for="placeName">Name</label>
-    <input name="placeName" type="text" id="placeName">
-  
-    <label for="start">When was it built?</label>
-    <input type="date" id="date" name="date" value="1788-07-22">
-  
-    <label for="description">Description</label>
-    <input name="description" type="text" id="description">
-  
-    <label for="image">add an image </label>
-    <input type="text" name="image" id="image">
-  
-    <label for="WesAnQuote">Add a Wes Anderson quote</label>
-    <input type="text" name="quote" id="quote">
+  <input name="placeName" type="text" id="placeName">
+
+  <label for="start">When was it built?</label>
+  <input type="date" id="date" name="date" value="1788-07-22">
+
+  <label for="description">Description</label>
+  <input name="description" type="text" id="description">
+
+  <label for="image">add an image </label>
+  <input type="file" name="image" id="image">
+
+  <label for="WesAnQuote">Add a Wes Anderson quote</label>
+  <input type="text" name="quote" id="quote">
   
     <input style="display: none" type="text" name="coordinates" value="${coord.toArray()}">
 

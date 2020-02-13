@@ -6,13 +6,13 @@ router.get("/", (req, res, next) => {
   res.render("index", { user: user });
 });
 
-router.use((req, res, next) => {
-  if (req.session.user) {
-    next();
-  } else {
-    res.redirect("/user/login");
-  }
-});
+// router.use((req, res, next) => {
+//   if (req.session.user) {
+//     next();
+//   } else {
+//     res.redirect("/user/login");
+//   }
+// });
 
 router.get("/logout", (req, res, next) => {
   req.session.destroy(err => {

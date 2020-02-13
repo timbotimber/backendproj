@@ -121,7 +121,8 @@ button {
   position: relative; }
 
 .locationpopup {
-  font-family: "Open Sans Condensed", sans-serif; }
+  font-family: "Open Sans Condensed", sans-serif;
+  display: none; }
 
 .mapboxgl-popup-close-button {
   width: 10px; }

@@ -5,7 +5,10 @@
 
     {{#if user}}
 
-    <h2>Ahoy there, {{user.username}}</h2>
+    <h2>Ahoy there, {{user.username}} <br>
+        click an icon below to see all listings
+    </h2>
+
     <a href="/locations/add" id="add-marker"><button>ADD</button></a>
     <a href="/logout"><button>LOGOUT</button></a>
 
@@ -28,11 +31,14 @@
 
 </div>
 
-{{!-- <div class="ahoycontainer">
-    <img class="papasteve" src="../public/images/steve.001.png" alt="steve">
-</div> --}}
-
 {{!-- <script src=“https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js”></script> --}}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-<div id='map' style='width: 100%; height: 90vh;'></div>
+<div id="home-container">
+    <div id='map' style='width: 100%; height: 90vh;'></div>
+    <div id="ahoycontainer">
+        <img src="../public/images/steveo.png" alt="steve">
+    </div>
+
+
+</div>

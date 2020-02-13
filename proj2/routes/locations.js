@@ -35,8 +35,8 @@ router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
   // // let coordinates = req.body.coordinates.split(",");
   // // console.log(coordinates);
 
-  let coordinates = req.body.coordinates.split(",");
-  console.log("co-ords: ", coordinates);
+  //let coordinates = req.body.coordinates.split(",");
+  //console.log("co-ords: ", coordinates);
   Location.create({
     name,
     imgPath, //M, before: image
@@ -45,8 +45,8 @@ router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
     quote,
     coordinates
   })
-    .then((created) => {
-      console.log("CREATED", created)
+    .then(created => {
+      console.log("CREATED", created);
       res.redirect("/");
     })
     .catch(error => {
