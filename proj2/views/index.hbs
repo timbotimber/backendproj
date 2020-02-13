@@ -1,13 +1,36 @@
 <div id="header">
 
+
+
+
+    {{#if user}}
+
+    <h2>Ahoy there, {{user.username}}</h2>
+    <a href="/locations/add" id="add-marker"><button>ADD</button></a>
+    <a href="/logout"><button>LOGOUT</button></a>
+
+
+
+    {{else}}
+    <h2><a href="/user/login">LOGIN</a> or <a href="/user/signup">SIGN UP</a> to get involved</h2>
+
+
+
+    {{/if}}
+
     <a href="/locations"><button>LOCATIONS</button></a>
     {{!-- <a href="/"><button>MAP</button></a> --}}
-    <a href="/locations/add" id="add-marker"><button>ADD</button></a>
-    <a href="/user/login"><button>LOGIN</button></a>
-    <a href="/logout"><button>LOGOUT</button></a>
-    <a href="/user/signup"><button>SIGN UP</button></a>
+
+
+
+
+
 
 </div>
+
+{{!-- <div class="ahoycontainer">
+    <img class="papasteve" src="../public/images/steve.001.png" alt="steve">
+</div> --}}
 
 {{!-- <script src=“https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js”></script> --}}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res, next) => {
-  console.log(req.session.user);
-  res.render("index");
+  let user = req.session.user;
+  res.render("index", { user: user });
 });
 
 router.use((req, res, next) => {
@@ -12,10 +12,6 @@ router.use((req, res, next) => {
   } else {
     res.redirect("/user/login");
   }
-});
-
-router.get("/secret", (req, res, next) => {
-  res.render("secret");
 });
 
 router.get("/logout", (req, res, next) => {
