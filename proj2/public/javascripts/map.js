@@ -12,20 +12,21 @@ const map = new mapboxgl.Map({
 const nav = new mapboxgl.NavigationControl();
 map.addControl(nav, "top-right");
 
-document.getElementById("add-marker").onclick = e => {
-  e.preventDefault();
-  const marker = new mapboxgl.Marker({ draggable: true });
-  const centerCoords = map.getCenter();
-  marker.setLngLat(centerCoords);
-  marker.addTo(map);
-  marker.on("dragend", data => {
-    const coord = data.target.getLngLat();
-    console.log("cood", coord);
-    const popup = new mapboxgl.Popup();
+if (document.getElementById("add-marker")) {
+  document.getElementById("add-marker").onclick = e => {
+    e.preventDefault();
+    const marker = new mapboxgl.Marker({ draggable: true });
+    const centerCoords = map.getCenter();
+    marker.setLngLat(centerCoords);
+    marker.addTo(map);
+    marker.on("dragend", data => {
+      const coord = data.target.getLngLat();
+      console.log("cood", coord);
+      const popup = new mapboxgl.Popup();
 
-    popup.setLngLat(coord);
-    popup.setMaxWidth("400px");
-    popup.setHTML(`<h2>Use the form below to add your own location</h2> 
+      popup.setLngLat(coord);
+      popup.setMaxWidth("400px");
+      popup.setHTML(`<h2>Use the form below to add your own location</h2> 
     
     <form action="/locations/add" method="POST" id="form" enctype="multipart/form-data">
 
@@ -33,7 +34,7 @@ document.getElementById("add-marker").onclick = e => {
   <input name="placeName" type="text" id="placeName">
 
   <label for="start">When was it built?</label>
-  <input type="date" id="date" name="date" value="1788-07-22">
+  <input type="date" id="builtData" name="builtData" value="2020-01-01">
 
   <label for="description">Description</label>
   <input name="description" type="text" id="description">
@@ -48,9 +49,10 @@ document.getElementById("add-marker").onclick = e => {
 
     <button type="submit">Add</button>
   </form>`);
-    popup.addTo(map);
-  });
-};
+      popup.addTo(map);
+    });
+  };
+}
 
 axios
   .get(`http://localhost:3000/rawdata/`)

@@ -22,25 +22,21 @@ router.get("/locations/add", (req, res) => {
 
 // hello
 router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
-  let name = req.body.placeName;
+  let placeName = req.body.placeName;
   const imgPath = req.file.url;
   const imgName = req.file.originalname;
   let image = req.body.image;
-  let date = req.body.date;
+  let builtData = req.body.builtData;
   let description = req.body.description;
   let quote = req.body.quote;
 
-  // console.log("HEEELELLLLOOOOO??????", imgPath)
-  // console.log("IAMGE", imgName)
-  // // let coordinates = req.body.coordinates.split(",");
-  // // console.log(coordinates);
-  console.log("coordinates", req.body.coordinates)
+  console.log("coordinates", req.body.coordinates);
   let coordinates = req.body.coordinates.split(",");
   console.log("co-ords: ", coordinates);
   Location.create({
-    name,
+    placeName,
     imgPath, //M, before: image
-    date,
+    builtData,
     description,
     quote,
     coordinates
