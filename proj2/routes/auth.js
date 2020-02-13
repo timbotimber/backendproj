@@ -53,7 +53,7 @@ router.post("/signup", (req, res, next) => {
     .then(createdUser => {
       req.session.user = createdUser;
       console.log(req.session.user);
-      res.redirect("http://localhost:3000/");
+      res.redirect("/");
     })
     .catch(error => {
       console.log(error);

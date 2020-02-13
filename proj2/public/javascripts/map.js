@@ -53,7 +53,7 @@ document.getElementById("add-marker").onclick = e => {
 };
 
 axios
-  .get(`http://localhost:3000/rawdata/`)
+  .get(`/rawdata/`)
   .then(response => {
     console.log("response", response);
     let locations = response.data; // the array of coordinates that we are sending from our backend route
@@ -83,7 +83,7 @@ axios
         const coord = data.target.coordinates;
 
         axios
-          .patch(`http://localhost:3000/locations`, { coordinates: coord })
+          .patch(`/locations`, { coordinates: coord })
           .then(() => {
             console.log("locations updated!");
           })
