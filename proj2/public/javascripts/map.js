@@ -61,6 +61,13 @@ axios
       let marker = new mapboxgl.Marker({ color: "#d53f50" });
       marker.setLngLat(location.coordinates);
       marker.addTo(map);
+      const popup = new mapboxgl.Popup({ className: "locationpopup" });
+      // popup.setLngLat(map.getCenter());
+      popup.setHTML(
+        `<div> <a href="/locations/${location._id}">${location.placeName}</a></div>`
+      );
+
+      marker.setPopup(popup);
       marker.on("dragend", data => {
         const coord = data.target.coordinates;
 

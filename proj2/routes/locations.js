@@ -24,13 +24,7 @@ router.get(
   }
 );
 
-
-
-
-
-
-
-// hello 
+// hello
 router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
   let name = req.body.placeName;
   let image = req.body.image;
@@ -44,7 +38,7 @@ router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
     image,
     date,
     description,
-    quote,
+    quote
     // coordinates
   })
     .then(() => {

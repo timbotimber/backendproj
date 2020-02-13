@@ -12,6 +12,7 @@ h2 {
 
 button {
   color: #feffff;
+  font-family: "Open Sans Condensed", sans-serif;
   background-color: #d53f50;
   border-radius: 50px;
   width: 9vw;
@@ -111,12 +112,19 @@ button {
   display: none; }
 
 .locationCard-solo {
-  font-family: 'Zhi Mang Xing', cursive;
+  font-family: "Zhi Mang Xing", cursive;
   border-radius: 10px;
   width: 35vw;
   text-align: center;
   display: flex;
   flex-direction: column;
   position: relative; }
+
+.locationpopup {
+  font-family: "Open Sans Condensed", sans-serif;
+  width: 400px; }
+
+.mapboxgl-popup-close-button {
+  width: 10px; }
 
 /*# sourceMappingURL=style.css.map */

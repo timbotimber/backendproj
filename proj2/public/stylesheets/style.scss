@@ -22,6 +22,7 @@ h2 {
 
 button {
   color: $white;
+  font-family: "Open Sans Condensed", sans-serif;
   background-color: $red;
   border-radius: 50px;
   // padding: 10px 15px;
@@ -144,7 +145,7 @@ button {
 }
 
 .locationCard-solo {
-  font-family: 'Zhi Mang Xing', cursive;
+  font-family: "Zhi Mang Xing", cursive;
   border-radius: 10px;
   width: 35vw;
   text-align: center;
@@ -153,3 +154,11 @@ button {
   position: relative;
 }
 
+.locationpopup {
+  font-family: "Open Sans Condensed", sans-serif;
+  width: 400px;
+}
+
+.mapboxgl-popup-close-button {
+  width: 10px;
+}
