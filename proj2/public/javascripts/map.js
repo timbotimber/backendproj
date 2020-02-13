@@ -75,7 +75,6 @@ axios
         window.location.href = `/locations/${location._id}`;
       });
 
-      //
       popup.setHTML(
         `<div> <a href="/locations/${location._id}">${location.placeName}</a></div>`
       );

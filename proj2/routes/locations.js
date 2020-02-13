@@ -29,8 +29,9 @@ router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
   let builtData = req.body.builtData;
   let description = req.body.description;
   let quote = req.body.quote;
+  let owner = req.session.user;
 
-  console.log("coordinates", req.body.coordinates);
+  console.log("owner", req.session.user);
   let coordinates = req.body.coordinates.split(",");
   console.log("co-ords: ", coordinates);
   Location.create({
@@ -39,7 +40,8 @@ router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
     builtData,
     description,
     quote,
-    coordinates
+    coordinates,
+    owner
   })
     .then(created => {
       console.log("CREATED", created);
@@ -66,17 +68,6 @@ router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
 
 router.post("/locations/edit/:id", (req, res, next) => {
   const { placeName, builtData, description } = req.body;
-  // console.log("HELLO");
-  // Location.update(
-  //   { _id: req.query.location_id },
-  //   { $set: { placeName, builtData, description } }
-  // )
-  //   .then(() => {
-  //     res.redirect("/");
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   });
   Location.findByIdAndUpdate(
     req.params.id,
     { placeName, builtData, description },
@@ -127,6 +118,10 @@ router.get("/locations/:locationId", (req, res, next) => {
   const locationsId = req.params.locationId;
   Location.findById(locationsId)
     .then(location => {
+      console.log("STTTRTTRRTRRTRTRTTR", req.session.user._id, location.owner);
+      if (req.session.user._id === location.owner) {
+        location.canEdit = true;
+      }
       console.log(location);
       res.render("locations/location.hbs", location);
     })
