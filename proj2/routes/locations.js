@@ -26,28 +26,26 @@ router.get("/locations/add", (req, res) => {
 
 // hello
 router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
-  let name = req.body.placeName;
+  let placeName = req.body.placeName;
   const imgPath = req.file.url;
   const imgName = req.file.originalname;
   let image = req.body.image;
-  let date = req.body.date;
+  let builtData = req.body.builtData;
   let description = req.body.description;
   let quote = req.body.quote;
+  let owner = req.session.user;
 
-  // console.log("HEEELELLLLOOOOO??????", imgPath)
-  // console.log("IAMGE", imgName)
-  // // let coordinates = req.body.coordinates.split(",");
-  // // console.log(coordinates);
-  console.log("coordinates", req.body.coordinates)
+  console.log("owner", req.session.user);
   let coordinates = req.body.coordinates.split(",");
   console.log("co-ords: ", coordinates);
   Location.create({
-    name,
+    placeName,
     imgPath, //M, before: image
-    date,
+    builtData,
     description,
     quote,
-    coordinates
+    coordinates,
+    owner
   })
     .then(created => {
       console.log("CREATED", created);
@@ -74,17 +72,6 @@ router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
 
 router.post("/locations/edit/:id", (req, res, next) => {
   const { placeName, builtData, description } = req.body;
-  // console.log("HELLO");
-  // Location.update(
-  //   { _id: req.query.location_id },
-  //   { $set: { placeName, builtData, description } }
-  // )
-  //   .then(() => {
-  //     res.redirect("/");
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   });
   Location.findByIdAndUpdate(
     req.params.id,
     { placeName, builtData, description },
@@ -135,6 +122,10 @@ router.get("/locations/:locationId", (req, res, next) => {
   const locationsId = req.params.locationId;
   Location.findById(locationsId)
     .then(location => {
+      console.log("STTTRTTRRTRRTRTRTTR", req.session.user._id, location.owner);
+      if (req.session.user._id === location.owner) {
+        location.canEdit = true;
+      }
       console.log(location);
       res.render("locations/location.hbs", location);
     })
