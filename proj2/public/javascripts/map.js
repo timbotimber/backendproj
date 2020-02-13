@@ -27,7 +27,7 @@ document.getElementById("add-marker").onclick = e => {
     popup.setMaxWidth("400px");
     popup.setHTML(`<h2>Use the form below to add your own location</h2> 
     
-    <form action="/locations/add" method="POST" id="form">
+    <form action="/locations/add" method="POST" id="form" enctype="multipart/form-data">
 
     <label for="placeName">Name</label>
   <input name="placeName" type="text" id="placeName">
