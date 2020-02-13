@@ -4,6 +4,9 @@ const Location = require("../models/Location");
 const uploadCloud = require("../config/cloudinary.js");
 // const locationsJS = require("../bin/data");
 
+router.get("/about", (req, res) => {
+  res.render("../views/about.hbs");
+});
 router.get("/locations", (req, res) => {
   Location.find()
     .then(locationDocuments => {
@@ -19,6 +22,7 @@ router.get("/locations", (req, res) => {
 router.get("/locations/add", (req, res) => {
   res.render("../views/locations/add.hbs");
 });
+
 
 // hello
 router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
