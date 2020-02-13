@@ -38,7 +38,7 @@ const locations = [
         located: "Northern Ireland",
         builtData: 1780,
         description: "Hillsborough Castle is in fact, not a castle at all. The estate, which is an Anglo-Irish Big House, was built in the late 18th century and owned by the Hill family until 1922 when it was sold to the British government. Since its sale, Hillsborough Castle has served many purposes including the official Northern Ireland residence of Queen Elizabeth II.",
-        coordinates: [-71.466431, 43.03315],
+        coordinates: [-71.466431, 43.03315], // 54.464125, -6.092878 should be the right coordinates
         wesAndersonMovie: "The Royal Tenenbaums"
     },
     {
@@ -207,7 +207,7 @@ const locations = [
 ];
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/proj2", () => {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/proj2", () => {
     console.log("Connected to DB");
 });
 
