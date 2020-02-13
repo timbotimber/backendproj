@@ -15,7 +15,15 @@
     {{#each locationList}}
     <div class="locationCard">
         <a href="/locations/{{_id}}">
-            <img src="../{{image}}" alt="">
+
+            {{!-- //M changes: remove all IF's and line 21: <img src="{{imgPath}}" alt=""> --}}
+            {{#if imgPath}}
+            <img src="{{imgPath}}" alt="">
+            {{/if}}
+            {{#if image}}
+            <img src="../{{image}}" alt=""> {{!-- KEEP THIS LINE --}}
+            {{/if}}
+            {{!-- END OF //M --}}
             <h3>{{placeName}}</h3>
             <h5>{{located}}</h5>
             <h6>{{builtData}} </h6>

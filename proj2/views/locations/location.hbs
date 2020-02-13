@@ -1,8 +1,14 @@
 <div class="container">
     {{!-- <div id="locationImage"> --}}
     {{!-- </div> --}}
-    <img src="../{{this.image}}" alt="">
-
+    {{!-- //M changes: remove all IF's and line 21: <img src="{{imgPath}}" alt=""> --}}
+    {{#if imgPath}}
+    <img src="{{imgPath}}" alt="">
+    {{/if}}
+    {{#if image}}
+    <img src="../{{image}}" alt=""> {{!-- KEEP THIS LINE --}}
+    {{/if}}
+    {{!-- END OF //M --}}
     <div class="locationCard-solo">
         <h1> {{placeName}} </h1>
 

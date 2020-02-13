@@ -21,7 +21,10 @@ const locationSchema = new Schema({
       "The Grand Budapest Hotel",
       "Isle of Dogs"
     ]
-  }
+  },
+  //M
+  imgPath: String
+  //
 });
 
 const Location = mongoose.model("Location", locationSchema);
