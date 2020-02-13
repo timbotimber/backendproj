@@ -1,13 +1,17 @@
 <div id="header">
-
-    <a href="/"><button>MAP</button></a>
+    {{#if user}}
+    <h2>Ahoy there, {{user.username}} <br>
+        click an icon below to see all listings
+    </h2>
     <a href="/locations/add" id="add-marker"><button>ADD</button></a>
-    <a href="http://localhost:3000/locations/5e43e4c744a34ff6d76414a8"><button>test 1 page</button></a>
-    <a href="/user/login"><button>LOGIN</button></a>
     <a href="/logout"><button>LOGOUT</button></a>
-    <a href="/user/signup"><button>SIGN UP</button></a>
-
+    {{else}}
+    <h2><a href="/user/login">LOGIN</a> or <a href="/user/signup">SIGN UP</a> to add your own listings</h2>
+    {{/if}}
+    <a href="/"><button>MAP</button></a>
+    {{!-- <a href="/"><button>MAP</button></a> --}}
 </div>
+
 
 
 <div class="container">
