@@ -4,7 +4,10 @@ const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/timbotimber/ck6gkirhv0tc41imrp5a44z9d",
   center: [13.405, 52.52],
-  zoom: 4.5
+  zoom: 4.5,
+  options: {
+    anchor: "top-right"
+  }
 });
 const nav = new mapboxgl.NavigationControl();
 map.addControl(nav, "top-right");
@@ -63,6 +66,14 @@ axios
       marker.addTo(map);
       const popup = new mapboxgl.Popup({ className: "locationpopup" });
       // popup.setLngLat(map.getCenter());
+
+      //
+
+      marker.getElement().addEventListener("click", event => {
+        window.location.href = `/locations/${location._id}`;
+      });
+
+      //
       popup.setHTML(
         `<div> <a href="/locations/${location._id}">${location.placeName}</a></div>`
       );
