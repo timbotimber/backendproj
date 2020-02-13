@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user");
+const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
@@ -53,7 +53,7 @@ router.post("/signup", (req, res, next) => {
     .then(createdUser => {
       req.session.user = createdUser;
       console.log(req.session.user);
-      res.redirect("http://localhost:3000/");
+      res.redirect("/");
     })
     .catch(error => {
       console.log(error);
