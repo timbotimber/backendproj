@@ -7,7 +7,7 @@ const uploadCloud = require("../config/cloudinary.js");
 router.get("/locations", (req, res) => {
   Location.find()
     .then(locationDocuments => {
-      console.log(locationDocuments[0]);
+      // console.log(locationDocuments[0]);
       res.render("locations/list.hbs", { locationList: locationDocuments });
       // res.send(require("../data.js"))
     })
@@ -16,13 +16,9 @@ router.get("/locations", (req, res) => {
     });
 });
 
-router.get(
-  "/locations/add",
-  // loginCheck,
-  (req, res) => {
-    res.render("../views/locations/add.hbs");
-  }
-);
+router.get("/locations/add", (req, res) => {
+  res.render("../views/locations/add.hbs");
+});
 
 // hello
 router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
@@ -31,15 +27,15 @@ router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
   let date = req.body.date;
   let description = req.body.description;
   let quote = req.body.quote;
-  // let coordinates = req.body.coordinates.split(",");
-  // console.log(coordinates);
+  let coordinates = req.body.coordinates.split(",");
+  console.log("co-ords: ", coordinates);
   Location.create({
     name,
     image,
     date,
     description,
-    quote
-    // coordinates
+    quote,
+    coordinates
   })
     .then(() => {
       res.redirect("/");
@@ -65,7 +61,7 @@ router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
 
 router.post("/locations/edit/:id", (req, res, next) => {
   const { placeName, builtData, description } = req.body;
-  console.log("HELLO");
+  // console.log("HELLO");
   // Location.update(
   //   { _id: req.query.location_id },
   //   { $set: { placeName, builtData, description } }
@@ -82,7 +78,7 @@ router.post("/locations/edit/:id", (req, res, next) => {
     { new: true }
   )
     .then(response => {
-      console.log("HALLO", { response });
+      // console.log("HALLO", { response });
       res.redirect("/");
     })
     .catch(err => console.log(err));
