@@ -122,6 +122,7 @@ router.get("/rawdata", (req, res, next) => {
 
 router.get("/locations/:locationId/delete", (req, res, next) => {
   const locationsId = req.params.locationId;
+  console.log(locationsId);
   Location.deleteOne({ _id: locationsId })
     .then(() => {
       res.redirect("/");
@@ -139,8 +140,8 @@ router.get("/locations/:locationId", (req, res, next) => {
       if (req.session.user._id === location.owner) {
         location.canEdit = true;
       }
-      console.log("true?", location.canEdit);
       let object = { location: location, user: user };
+      console.log(location);
       res.render("locations/location.hbs", { object: object });
     })
     .catch(err => {
