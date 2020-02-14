@@ -122,6 +122,7 @@ router.get("/rawdata", (req, res, next) => {
 
 router.get("/locations/:locationId/delete", (req, res, next) => {
   const locationsId = req.params.locationId;
+  console.log(locationsId);
   Location.deleteOne({ _id: locationsId })
     .then(() => {
       res.redirect("/");
@@ -139,13 +140,42 @@ router.get("/locations/:locationId", (req, res, next) => {
       if (req.session.user._id === location.owner) {
         location.canEdit = true;
       }
-      console.log("true?", location.canEdit);
-      let object = { location: location, user: user };
+
+      console.log("LOCACTION", location.builtData);
+      let newDate = formatDate(location.builtData);
+      console.log("new date", newDate);
+
+      let object = { location: location, user: user, newDate };
+      console.log(location);
       res.render("locations/location.hbs", { object: object });
     })
     .catch(err => {
       next(err);
     });
 });
+
+function formatDate(date) {
+  console.log("DATE", date);
+  var monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return day + " " + monthNames[monthIndex] + " " + year;
+}
 
 module.exports = router;

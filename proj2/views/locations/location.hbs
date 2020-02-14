@@ -30,7 +30,7 @@
     <div class="locationCard-solo">
         <h1> {{object.location.placeName}} </h1>
 
-        <h4>{{object.location.builtData}}</h4>
+        <h4>{{object.newDate}}</h4>
 
         <p> {{object.location.description}} </p>
 
@@ -38,9 +38,9 @@
 
             <a href="/"> <button> back to map </button> </a>
             {{#if object.location.canEdit}}
-            <a href="/locations/edit/{{_id}}" </a> <button> edit
+            <a href="/locations/edit/{{object.location._id}}" </a> <button> edit
                 </button>
-                <a href="/locations/{{_id}}/delete" </a> <button> delete </button>
+                <a href="/locations/{{object.location._id}}/delete" </a> <button> delete </button>
                     {{/if}}
         </div>
 
