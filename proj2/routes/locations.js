@@ -5,8 +5,10 @@ const uploadCloud = require("../config/cloudinary.js");
 // const locationsJS = require("../bin/data");
 
 router.get("/about", (req, res) => {
-  res.render("../views/about.hbs");
+  let user = req.session.user;
+  res.render("../views/about.hbs", { user: user });
 });
+
 router.get("/locations", (req, res) => {
   Location.find()
     .then(locationDocuments => {
