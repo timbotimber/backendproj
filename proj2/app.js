@@ -12,7 +12,9 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/proj2", { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/proj2", {
+    useNewUrlParser: true
+  })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -34,6 +36,10 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+// app.use((req, res, next) => {
+//   res.locals.user = req.user;
+//   next();
+// });
 
 // Express View engine setup
 

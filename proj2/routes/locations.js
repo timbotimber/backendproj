@@ -10,8 +10,11 @@ router.get("/about", (req, res) => {
 router.get("/locations", (req, res) => {
   Location.find()
     .then(locationDocuments => {
-      // console.log(locationDocuments[0]);
-      res.render("locations/list.hbs", { locationList: locationDocuments });
+      let user = req.session.user;
+      res.render("locations/list.hbs", {
+        locationList: locationDocuments,
+        user: user
+      });
       // res.send(require("../data.js"))
     })
     .catch(err => {
@@ -130,14 +133,15 @@ router.get("/locations/:locationId/delete", (req, res, next) => {
 
 router.get("/locations/:locationId", (req, res, next) => {
   const locationsId = req.params.locationId;
+  const user = req.session.user;
   Location.findById(locationsId)
     .then(location => {
-      // console.log("STTTRTTRRTRRTRTRTTR", req.session.user._id, location.owner);
       if (req.session.user.id === location.owner) {
         location.canEdit = true;
       }
       console.log(location);
-      res.render("locations/location.hbs", location);
+      let object = { location: location, user: user };
+      res.render("locations/location.hbs", { object: object });
     })
     .catch(err => {
       next(err);
