@@ -21,7 +21,7 @@
     {{!-- </div> --}}
     {{!-- //M changes: remove all IF's and line 21: <img src="{{imgPath}}" alt=""> --}}
     {{#if object.location.imgPath}}
-    <img src="{{imgPath}}" alt="">
+    <img src="{{object.location.imgPath}}" alt="">
     {{/if}}
     {{#if object.location.image}}
     <img src="../{{object.location.image}}" alt=""> {{!-- KEEP THIS LINE --}}
@@ -37,7 +37,7 @@
         <div class="location buttons">
 
             <a href="/"> <button> back to map </button> </a>
-            {{#if canEdit}}
+            {{#if object.location.canEdit}}
             <a href="/locations/edit/{{_id}}" </a> <button> edit
                 </button>
                 <a href="/locations/{{_id}}/delete" </a> <button> delete </button>

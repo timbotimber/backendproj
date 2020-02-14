@@ -136,10 +136,10 @@ router.get("/locations/:locationId", (req, res, next) => {
   const user = req.session.user;
   Location.findById(locationsId)
     .then(location => {
-      if (req.session.user.id === location.owner) {
+      if (req.session.user._id === location.owner) {
         location.canEdit = true;
       }
-      console.log(location);
+      console.log("true?", location.canEdit);
       let object = { location: location, user: user };
       res.render("locations/location.hbs", { object: object });
     })
