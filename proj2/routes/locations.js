@@ -9,19 +9,26 @@ router.get("/about", (req, res) => {
   res.render("../views/about.hbs", { user: user });
 });
 
-router.get("/locations", (req, res) => {
-  Location.find()
-    .then(locationDocuments => {
-      let user = req.session.user;
-      res.render("locations/list.hbs", {
-        locationList: locationDocuments,
-        user: user
-      });
-      // res.send(require("../data.js"))
-    })
-    .catch(err => {
-      next(err);
-    });
+router.get("/locations", async(req, res) => {
+  
+  try {
+    let locationDocuments = await Location.find()
+    let user = req.session.user;
+    
+    await res.render("locations/list.hbs", {
+          locationList: locationDocuments,
+          user: user
+      }); 
+  }
+  
+  catch(err) {
+    console.log(err)
+  }
+  
+  finally {
+    console.log("success")
+  }
+  
 });
 
 router.get("/locations/add", (req, res) => {
@@ -29,7 +36,8 @@ router.get("/locations/add", (req, res) => {
 });
 
 // hello
-router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
+router.post("/locations/add", uploadCloud.single("image"), async(req, res) => {
+  
   let placeName = req.body.placeName;
   const imgPath = req.file.url;
   const imgName = req.file.originalname;
@@ -38,26 +46,30 @@ router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
   let description = req.body.description;
   let quote = req.body.quote;
   let owner = req.session.user;
-
-  console.log("owner", req.session.user);
   let coordinates = req.body.coordinates.split(",");
-  console.log("co-ords: ", coordinates);
-  Location.create({
-    placeName,
-    imgPath, //M, before: image
-    builtData,
-    description,
-    quote,
-    coordinates,
-    owner
-  })
-    .then(created => {
-      console.log("CREATED", created);
-      res.redirect("/");
+
+  // console.log("owner", req.session.user);
+  // console.log("co-ords: ", coordinates);
+  try {
+    
+    let created = await Location.create({
+      placeName,
+      imgPath, //M, before: image
+      builtData,
+      description,
+      quote,
+      coordinates,
+      owner
     })
-    .catch(error => {
-      console.log(error);
-    });
+    
+    await res.redirect("/")
+    
+  }
+  
+  catch(error) {
+    console.log(error)
+  }
+
 });
 
 // router.get("/locations/edit", (req, res, next) => {
@@ -74,110 +86,133 @@ router.post("/locations/add", uploadCloud.single("image"), (req, res) => {
 //     });
 // });
 
-router.post("/locations/edit/:id", (req, res, next) => {
+router.post("/locations/edit/:id", async(req, res, next) => {
+  
   const { placeName, builtData, description } = req.body;
-  Location.findByIdAndUpdate(
+  
+  try {
+    
+  await Location.findByIdAndUpdate(
     req.params.id,
     { placeName, builtData, description },
-    { new: true }
+    { new: true} 
   )
-    .then(response => {
-      // console.log("HALLO", { response });
-      res.redirect("/");
-    })
-    .catch(err => console.log(err));
+  
+  await res.redirect("/");
+    
+}
+  
+  catch(error) {
+  console.log(error)  
+  } 
+      
+   
 });
 
-router.get("/locations/edit/:locationId", (req, res, next) => {
+router.get("/locations/edit/:locationId", async(req, res, next) => {
   const locationsId = req.params.locationId;
-  Location.findById(locationsId)
-    .then(location => {
-      console.log(location);
-      res.render("locations/edit", { location });
-    })
-    .catch(err => {
-      next(err);
-    });
+  
+  try {
+    let location = await Location.findById(locationsId)
+    res.render("locations/edit", { location });
+  }
+  
+  catch(err) {
+    console.log(err)
+  }
+  
 });
 
-router.patch("/rawdata/:id", (req, res, next) => {
-  const changes = req.body; // in our axios call on the front-end, we'll make sure to pass the fields that need to be updated
-  Location.updateOne({ id: req.params.id }, changes)
-    .then(() => {
-      // successful update, we can send a response
-      res.json();
-    })
-    .catch(err => {
-      next(err);
-    });
+router.patch("/rawdata/:id", async(req, res, next) => {
+  const changes = req.body; 
+  
+  
+  try {
+    await Location.updateOne({ id: req.params.id }, changes)
+    res.json();
+  }
+  
+  catch(error) {
+    console.log(error)
+  }
 });
 
-router.get("/rawdata", (req, res, next) => {
-  Location.find()
-    .then(locationDocument => {
-      res.json(locationDocument);
-    })
-    .catch(err => {
-      next(err);
-    });
+router.get("/rawdata", async(req, res, next) => {
+  
+  try {
+    
+    let locationDocument = await Location.find()
+    res.json(locationDocument);
+  }
+  
+  
+  catch(error) {
+    console.log(error)
+  }
 });
 
-router.get("/locations/:locationId/delete", (req, res, next) => {
+router.get("/locations/:locationId/delete", async(req, res) => {
   const locationsId = req.params.locationId;
-  console.log(locationsId);
-  Location.deleteOne({ _id: locationsId })
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch(err => {
-      next(err);
-    });
+  
+  try {   
+    await  Location.deleteOne({ _id: locationsId })
+    res.redirect("/")
+  }
+ 
+ catch(error) {
+   Console.log(error)
+ }
+
 });
 
-router.get("/locations/:locationId", (req, res, next) => {
+router.get("/locations/:locationId", async(req, res, next) => {
+  
+
+  
   const locationsId = req.params.locationId;
   const user = req.session.user;
-  Location.findById(locationsId)
-    .then(location => {
-      if (req.session.user._id === location.owner) {
-        location.canEdit = true;
-      }
-
-      console.log("LOCACTION", location.builtData);
-      let newDate = formatDate(location.builtData);
-      console.log("new date", newDate);
-
-      let object = { location: location, user: user, newDate };
-      console.log(location);
-      res.render("locations/location.hbs", { object: object });
-    })
-    .catch(err => {
-      next(err);
-    });
+  
+  try {
+    let location = await Location.findById(locationsId)
+    if (req.session.user._id === location.owner) {
+      location.canEdit = true; 
+    }
+    
+    let newDate = formatDate(location.builtData);
+    let object = { location: location, user: user, newDate };
+        
+    res.render("locations/location.hbs", { object: object });
+  }
+  
+  catch(error) {
+    next(error);
+  }
+  
+  const formatDate = (date) => {
+    console.log("DATE", date);
+    let monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+  
+    let day = date.getDate();
+    let monthIndex = date.getMonth();
+    let year = date.getFullYear();
+  
+    return day + " " + monthNames[monthIndex] + " " + year;
+  }
+  
+  
 });
-
-function formatDate(date) {
-  console.log("DATE", date);
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
-  var day = date.getDate();
-  var monthIndex = date.getMonth();
-  var year = date.getFullYear();
-
-  return day + " " + monthNames[monthIndex] + " " + year;
-}
 
 module.exports = router;

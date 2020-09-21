@@ -10,7 +10,7 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-  console.log("help");
+  
 
   const username = req.body.username;
   const emailaddress = req.body.emailaddress;
@@ -22,22 +22,22 @@ router.post("/signup", (req, res, next) => {
 
   if (username === "" || password === "") {
     res.render("auth/signup", {
-      errorMessage: "Indicate a username and a password to sign up"
+      errorMessage: "Indicate a username and a password to sign up",
     });
     return;
   }
 
   if (password === "" || password === "") {
     res.render("auth/signup", {
-      errorMessage: "Indicate a username and a password to sign up"
+      errorMessage: "Indicate a username and a password to sign up",
     });
     return;
   }
 
-  User.findOne({ username: username }).then(user => {
+  User.findOne({ username: username }).then((user) => {
     if (user !== null) {
       res.render("auth/signup", {
-        errorMessage: "The username already exists!"
+        errorMessage: "The username already exists!",
       });
       return;
     }
@@ -48,14 +48,14 @@ router.post("/signup", (req, res, next) => {
     emailaddress,
     password: hashPass,
     favouritefilm,
-    profession
+    profession,
   })
-    .then(createdUser => {
+    .then((createdUser) => {
       req.session.user = createdUser;
       console.log(req.session.user);
       res.redirect("/");
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 });
@@ -70,16 +70,16 @@ router.post("/login", (req, res, next) => {
 
   if (theUsername === "" || thePassword === "") {
     res.render("auth/login", {
-      errorMessage: "Please enter both a username and  a password to sign in."
+      errorMessage: "Please enter both a username and  a password to sign in.",
     });
     return;
   }
 
   User.findOne({ username: theUsername })
-    .then(user => {
+    .then((user) => {
       if (!user) {
         res.render("auth/login", {
-          errorMessage: "The username doesn't exist."
+          errorMessage: "The username doesn't exist.",
         });
         return;
       }
@@ -89,11 +89,11 @@ router.post("/login", (req, res, next) => {
         res.redirect("/");
       } else {
         res.render("auth/login", {
-          errorMessage: "Incorrect password"
+          errorMessage: "Incorrect password",
         });
       }
     })
-    .catch(error => {
+    .catch((error) => {
       next(error);
     });
 });

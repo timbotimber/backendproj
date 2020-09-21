@@ -6,20 +6,21 @@ const map = new mapboxgl.Map({
   center: [13.405, 52.52],
   zoom: 4.5,
   options: {
-    anchor: "top-right"
-  }
+    anchor: "top-left",
+  },
 });
 const nav = new mapboxgl.NavigationControl();
 map.addControl(nav, "top-right");
 
 if (document.getElementById("add-marker")) {
-  document.getElementById("add-marker").onclick = e => {
+  document.getElementById("add-marker").onclick = (e) => {
     e.preventDefault();
     const marker = new mapboxgl.Marker({ draggable: true });
     const centerCoords = map.getCenter();
     marker.setLngLat(centerCoords);
     marker.addTo(map);
-    marker.on("dragend", data => {
+    marker.on("dragend", (data) => {
+      console.log(data);
       const coord = data.target.getLngLat();
       console.log("cood", coord);
       const popup = new mapboxgl.Popup();
@@ -56,11 +57,11 @@ if (document.getElementById("add-marker")) {
 
 axios
   .get(`/rawdata/`)
-  .then(response => {
+  .then((response) => {
     console.log("response", response);
     let locations = response.data; // the array of coordinates that we are sending from our backend route
 
-    locations.forEach(location => {
+    locations.forEach((location) => {
       console.log(location);
       console.log("test", location.coordinates);
       let marker = new mapboxgl.Marker({ color: "#d53f50" });
@@ -71,7 +72,7 @@ axios
 
       //
 
-      marker.getElement().addEventListener("click", event => {
+      marker.getElement().addEventListener("click", (event) => {
         window.location.href = `/locations/${location._id}`;
       });
 
@@ -80,7 +81,7 @@ axios
       );
 
       marker.setPopup(popup);
-      marker.on("dragend", data => {
+      marker.on("dragend", (data) => {
         const coord = data.target.coordinates;
 
         axios
@@ -88,12 +89,12 @@ axios
           .then(() => {
             console.log("locations updated!");
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
           });
       });
     });
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });
